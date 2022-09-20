@@ -1,0 +1,10 @@
+.spinner-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+}
+
+.slds-box {
+  background-color: #f4f6f9;
+}

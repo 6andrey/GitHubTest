@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>functionInvocationContainer</componentName>
+                <identifier>functionInvocationContainerId</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>flowLayout</name>
+                    <value>twoColumn</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>flowName</name>
+                    <value>Find_Schools</value>
+                </componentInstanceProperties>
+                <componentName>flowruntime:interview</componentName>
+                <identifier>flowruntime_interview1</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>content</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Invocation</masterLabel>
+    <template>
+        <name>functionsRecipesTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>
