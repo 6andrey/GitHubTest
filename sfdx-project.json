@@ -30,8 +30,8 @@
             "versionNumber": "1.0.0.NEXT"
         },
         {
-            "path": "./src/functions-recipes",
-            "package": "functions-recipes",
+            "path": "./src/dreamhouse-app",
+            "package": "dreamhouse-app",
             "versionName": "Version 1.0.0",
             "versionNumber": "1.0.0.NEXT"
         },
