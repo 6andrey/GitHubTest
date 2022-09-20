@@ -27,7 +27,19 @@
             "path": "./src/core-crm",
             "package": "core",
             "versionName": "Version 1.0.0",
-            "versionNumber": "1.0.0.0"
+            "versionNumber": "1.0.0.NEXT"
+        },
+        {
+            "path": "./src/functions-recipes",
+            "package": "functions-recipes",
+            "versionName": "Version 1.0.0",
+            "versionNumber": "1.0.0.NEXT",
+            "dependencies": [
+                {
+                    "package": "core",
+                    "versionNumber": "1.0.0.LATEST"
+                }
+            ]
         },
         {
             "path": "./src-ui",
@@ -71,7 +83,7 @@
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "52.0",
+    "sourceApiVersion": "55.0",
     "packageAliases": {
     },
     "plugins": {
