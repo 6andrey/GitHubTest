@@ -33,13 +33,7 @@
             "path": "./src/functions-recipes",
             "package": "functions-recipes",
             "versionName": "Version 1.0.0",
-            "versionNumber": "1.0.0.NEXT",
-            "dependencies": [
-                {
-                    "package": "core",
-                    "versionNumber": "1.0.0.LATEST"
-                }
-            ]
+            "versionNumber": "1.0.0.NEXT"
         },
         {
             "path": "./src-ui",
