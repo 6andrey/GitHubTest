@@ -67,7 +67,7 @@ jobs:
       - name: "Run PMD static code analysis"
         shell: bash
         run: |
-          sfdx sfpowerscripts:analyze:pmd -b --sourcedir=src/core-crm -o core-crm-pmd-output
+          sfdx sfpowerscripts:analyze:pmd -b --sourcedir=src -o core-crm-pmd-output
 
   validate-package-coverage:
     name: 'validate metadata coverage for unlocked packages'

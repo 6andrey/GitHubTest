@@ -27,7 +27,13 @@
             "path": "./src/core-crm",
             "package": "core",
             "versionName": "Version 1.0.0",
-            "versionNumber": "1.0.0.0"
+            "versionNumber": "1.0.0.NEXT"
+        },
+        {
+            "path": "./src/dreamhouse-app",
+            "package": "dreamhouse-app",
+            "versionName": "Version 1.0.0",
+            "versionNumber": "1.0.0.NEXT"
         },
         {
             "path": "./src-ui",
@@ -71,7 +77,7 @@
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "52.0",
+    "sourceApiVersion": "55.0",
     "packageAliases": {
     },
     "plugins": {
