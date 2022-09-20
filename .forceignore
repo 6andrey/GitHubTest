@@ -14,7 +14,7 @@ src-env-specific-alias-pre/**
 # LWC Jest
 **/__tests__/**
 
-**/README.md
+README.md
 
 
 src/frameworks/trigger-framework/sample
