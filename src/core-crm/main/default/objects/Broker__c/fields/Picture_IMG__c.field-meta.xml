@@ -4,7 +4,7 @@
     <externalId>false</externalId>
     <formula>IMAGE( Picture__c , "picture" , 150, 150)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Picture</label>
+    <label>Picture1</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Text</type>
