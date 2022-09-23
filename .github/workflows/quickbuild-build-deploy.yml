@@ -98,7 +98,7 @@ jobs:
   buildAndPublish:
     name: 'Build and Publish'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts
+    container: ghcr.io/dxatscale/sfpowerscripts-rc:alpha
     needs: deploy
     concurrency: build 
     if: github.ref == 'refs/heads/main' || 'refs/heads/release/*'
