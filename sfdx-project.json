@@ -74,7 +74,8 @@
     "sourceApiVersion": "55.0",
     "packageAliases": {
         "core": "0Ho4x0000010wC4CAI",
-        "core@1.0.0-1": "04t4x0000011iFjAAI"
+        "core@1.0.0-1": "04t4x0000011iFjAAI",
+        "core@1.0.0-2": "04t4x0000011iFoAAI"
     },
     "plugins": {}
 }
