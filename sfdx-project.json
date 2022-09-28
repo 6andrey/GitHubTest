@@ -25,7 +25,7 @@
         },
         {
             "path": "./src/core-crm",
-            "package": "core",
+            "package": "core_6andrey",
             "versionName": "Version 1.0.0",
             "versionNumber": "1.0.0.NEXT"
         },
@@ -73,9 +73,7 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "55.0",
     "packageAliases": {
-        "core": "0Ho4x0000010wC4CAI",
-        "core@1.0.0-1": "04t4x0000011iFjAAI",
-        "core@1.0.0-2": "04t4x0000011iFoAAI"
+        "core_6andrey": "0Ho4x000000CagsCAC"
     },
     "plugins": {}
 }
