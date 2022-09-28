@@ -49,7 +49,7 @@ jobs:
 
 
       - name: 'Drop the pool'
-        run: 'sfdx sfpowerscripts:pool:delete -t dev -v devhub'
+        run: 'sfdx sfpowerscripts:pool:delete -t dev_6andrey -v devhub'
 
   clean-pool-ci:
     name: 'Clean CI Pool'
@@ -69,4 +69,4 @@ jobs:
 
 
       - name: 'Drop the pool'
-        run: 'sfdx sfpowerscripts:pool:delete -t ci -v devhub -a'
+        run: 'sfdx sfpowerscripts:pool:delete -t ci_6andrey -v devhub -a'
