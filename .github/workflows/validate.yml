@@ -81,4 +81,4 @@ jobs:
       - name: "validate metadata coverage"
         shell: bash
         run: |
-          sfdx sfpowerkit:package:valid -n core -b StandardValueSet
+          sfdx sfpowerkit:package:valid -n core_6andrey -b StandardValueSet
