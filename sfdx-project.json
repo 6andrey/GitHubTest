@@ -30,6 +30,18 @@
             "versionNumber": "1.0.0.NEXT"
         },
         {
+            "path": "./src/sales/dreamhouse",
+            "package": "dreamhouse_6andrey",
+            "versionName": "Version 1.0.0",
+            "versionNumber": "1.0.0.NEXT",
+            "dependencies": [
+                {
+                    "package": "core_6andrey",
+                    "versionNumber": "1.0.0.LATEST"
+                }
+            ]
+        },        
+        {
             "path": "./src-ui",
             "package": "src-ui",
             "versionNumber": "1.1.0.0",
