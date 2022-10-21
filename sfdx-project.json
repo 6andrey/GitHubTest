@@ -40,6 +40,18 @@
                     "versionNumber": "1.0.0.LATEST"
                 }
             ]
+        },
+        {
+            "path": "./src/sales/raitings",
+            "package": "raitings_6andrey",
+            "versionName": "Version 1.0.0",
+            "versionNumber": "1.0.0.NEXT",
+            "dependencies": [
+                {
+                    "package": "core_6andrey",
+                    "versionNumber": "1.0.0.LATEST"
+                }
+            ]
         },        
         {
             "path": "./src-ui",
