@@ -20,7 +20,7 @@ on:
         required: false
         default: 'main'
   schedule:
-    - cron: '0 4 * * *'
+    - cron: '0 4 * * Tue,Sat'
 
 
 #Set the environment variables for tracking metrics
