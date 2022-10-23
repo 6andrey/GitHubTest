@@ -2,6 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Raiting__c</fullName>
     <externalId>false</externalId>
+    <inlineHelpText>Account rate system to assed clients readiness to purchase products</inlineHelpText>
     <label>Raiting</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
