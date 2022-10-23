@@ -52,17 +52,6 @@
                     "versionNumber": "1.0.0.LATEST"
                 }
             ]
-        },        
-        {
-            "path": "./src-ui",
-            "package": "src-ui",
-            "versionNumber": "1.1.0.0",
-            "ignoreOnStage": [
-                "prepare",
-                "validate",
-                "quickbuild",
-                "build"
-            ]
         },
         {
             "path": "./src-access-management",
@@ -71,8 +60,29 @@
             "ignoreOnStage": [
                 "prepare",
                 "validate",
-                "quickbuild",
                 "build"
+            ],
+            "dependencies": [
+                {
+                    "package": "raitings_6andrey",
+                    "versionNumber": "1.0.0.LATEST"
+                }
+            ]
+        },
+        {
+            "path": "./src-ui",
+            "package": "src-ui",
+            "versionNumber": "1.1.0.0",
+            "ignoreOnStage": [
+                "prepare",
+                "validate",
+                "build"
+            ],
+            "dependencies": [
+                {
+                    "package": "raitings_6andrey",
+                    "versionNumber": "1.0.0.LATEST"
+                }
             ]
         },
         {
@@ -97,7 +107,9 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "55.0",
     "packageAliases": {
-        "core_6andrey": "0Ho4x000000CagsCAC"
+        "core_6andrey": "0Ho4x000000CagsCAC",
+        "dreamhouse_6andrey": "0Ho4x000000Cah7CAC",
+        "raitings_6andrey": "0Ho4x000000CahCCAS"
     },
     "plugins": {}
 }
