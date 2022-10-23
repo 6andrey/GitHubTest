@@ -57,11 +57,6 @@
             "path": "./src-access-management",
             "package": "src-access-management",
             "versionNumber": "1.0.0.0",
-            "ignoreOnStage": [
-                "prepare",
-                "validate",
-                "build"
-            ],
             "dependencies": [
                 {
                     "package": "raitings_6andrey",
@@ -73,11 +68,6 @@
             "path": "./src-ui",
             "package": "src-ui",
             "versionNumber": "1.1.0.0",
-            "ignoreOnStage": [
-                "prepare",
-                "validate",
-                "build"
-            ],
             "dependencies": [
                 {
                     "package": "raitings_6andrey",
