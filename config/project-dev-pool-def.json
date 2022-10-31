@@ -10,6 +10,7 @@
     "retryOnFailure": true,
     "succeedOnDeploymentErrors": false,
     "installAll": true,
+    "preDependencyInstallationScriptPath":"./scripts/enableEncryption.sh",
     "fetchArtifacts": {
         "npm": {
           "scope": "@6andrey"
