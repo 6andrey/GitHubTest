@@ -12,9 +12,7 @@ jobs:
   deploy-code-fake:
     name: 'Deploy Code (fake)'
     runs-on: ubuntu-latest
-
     steps:
-
       - uses: actions/checkout@v3
       with:
         fetch-depth: 0
