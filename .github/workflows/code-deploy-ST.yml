@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy-code-fake:
+  version-deploy-tag:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,7 +40,9 @@ jobs:
             mkdir sfdx-cli
             tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
             ./sfdx-cli/install
-      - name: connect-to-org
+      - name: connect-to-st-org
         run: |
-          echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
-          sfdx auth:sfdxurl:store -f authfile -a devhub
+          echo "${{ secrets.DEV_SFDX_AUTH_URL }}" > ./authfile
+          sfdx auth:sfdxurl:store -f authfile -a st_org
+      - name: deploy-to-st-org
+        run: sfdx force:source:deploy -p src/core-crm -w 30 -u st_org
