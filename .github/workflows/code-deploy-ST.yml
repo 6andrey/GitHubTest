@@ -33,4 +33,4 @@ jobs:
         run: |
           echo ${{ steps.versioning.outputs.version }}
           echo ${{ steps.versioning.outputs.version_tag }}
-          echo ${{ steps.versioning.outputs.authors }}
+#          echo ${{ steps.versioning.outputs.authors }}
