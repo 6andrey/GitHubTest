@@ -14,6 +14,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Git Semantic Version
+        id: versioning
         uses: PaulHatch/semantic-version@v5.0.3
         with:
               # The prefix to use to identify tags
@@ -48,6 +49,6 @@ jobs:
       needs: deploy-code-fake
       runs-on: ubuntu-latest
       run: | 
-        echo ${{ jobs.deploy-code-fake.outputs.version }}
-        echo ${{ jobs.deploy-code-fake.outputs.version_tag }}
-        echo ${{ jobs.deploy-code-fake.outputs.authors }}
+        echo ${{ steps.versioning.outputs.version }}
+        echo ${{ steps.versioning.outputs.version_tag }}
+        echo ${{ steps.versioning.outputs.authors }}
