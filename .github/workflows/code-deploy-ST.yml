@@ -29,8 +29,8 @@ jobs:
               # Optional path to check for changes. If any changes are detected in the path the
               # 'changed' output will true. Enter multiple paths separated by spaces.
           user_format_type: "csv"
-      - name: create-git-tag
-        run: | 
+      - name: echo-runs
+        run: |
           echo ${{ steps.versioning.outputs.version }}
           echo ${{ steps.versioning.outputs.version_tag }}
           echo ${{ steps.versioning.outputs.authors }}
