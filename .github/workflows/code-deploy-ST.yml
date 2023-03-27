@@ -45,7 +45,7 @@ jobs:
           enable_prerelease_mode: true
 
   create-git-tag:
-    - needs: deplpoy-code-fake
+    - needs: deploy-code-fake
       runs-on: ubuntu-latest
       uses: actions/checkout@v3
       name: 'Create git tag'
