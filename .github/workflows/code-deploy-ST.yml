@@ -47,4 +47,4 @@ jobs:
       - name: deploy-to-st-org
         run: sfdx force:source:deploy -p src/core-crm -w 30 -u st_org
       -name: create-tag
-       run: git tag -a steps.versioning.outputs.version_tag -m steps.versioning.outputs.authors
+        run: git tag -a steps.versioning.outputs.version_tag -m steps.versioning.outputs.authors
