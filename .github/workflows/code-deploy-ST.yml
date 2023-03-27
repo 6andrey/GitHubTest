@@ -52,3 +52,5 @@ jobs:
           git config --global user.name "Andrey Shestakov"
           git tag -a ${{ steps.versioning.outputs.version_tag }} -m "test annotation"
           git push origin --tags
+
+          # https://stackoverflow.com/questions/17790123/shell-check-if-a-git-tag-exists-in-an-if-else-statement
