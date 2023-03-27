@@ -57,6 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     - uses: actions/checkout@v3
       name: 'Create git tag'
-      run: echo ${{ steps.bdeploy-code-fake.outputs.version }}
-      run: echo ${{ steps.bdeploy-code-fake.outputs.version_tag }}
-      run: echo ${{ steps.bdeploy-code-fake.outputs.authors }}
+      run: | 
+        echo ${{ steps.bdeploy-code-fake.outputs.version }}
+        echo ${{ steps.bdeploy-code-fake.outputs.version_tag }}
+        echo ${{ steps.bdeploy-code-fake.outputs.authors }}
