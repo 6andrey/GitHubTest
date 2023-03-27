@@ -4,8 +4,6 @@ name: 'Code Deploy - ST'
 
 on:
   workflow_dispatch:
-#  schedule:
-#    - cron: '0 */3 * * *'
 
 jobs:
   deploy-code-fake:
@@ -52,6 +50,6 @@ jobs:
     - uses: actions/checkout@v3
       name: 'Create git tag'
       run: | 
-        echo ${{ steps.bdeploy-code-fake.outputs.version }}
-        echo ${{ steps.bdeploy-code-fake.outputs.version_tag }}
-        echo ${{ steps.bdeploy-code-fake.outputs.authors }}
+        echo ${{ steps.deploy-code-fake.outputs.version }}
+        echo ${{ steps.deploy-code-fake.outputs.version_tag }}
+        echo ${{ steps.deploy-code-fake.outputs.authors }}
