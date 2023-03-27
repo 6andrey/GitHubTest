@@ -51,3 +51,4 @@ jobs:
           git config --global user.email "6andrey@gmail.com"
           git config --global user.name "Andrey Shestakov"
           git tag -a steps.versioning.outputs.version_tag -m steps.versioning.outputs.authors
+          git push origin --tags
