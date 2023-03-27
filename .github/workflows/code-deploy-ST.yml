@@ -19,7 +19,7 @@ jobs:
       - name: 'Authenticate to ST (DevHub)'
         run: |
           echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
-          sfdx auth:sfdxurl:store -f authfile -a devhub
+#          sfdx auth:sfdxurl:store -f authfile -a devhub
       - name: Git Semantic Version
         - uses: PaulHatch/semantic-version@v5.0.3
           with:
