@@ -48,6 +48,6 @@ jobs:
       needs: deploy-code-fake
       runs-on: ubuntu-latest
       run: | 
-        echo ${{ steps.deploy-code-fake.outputs.version }}
-        echo ${{ steps.deploy-code-fake.outputs.version_tag }}
-        echo ${{ steps.deploy-code-fake.outputs.authors }}
+        echo ${{ jobs.deploy-code-fake.outputs.version }}
+        echo ${{ jobs.deploy-code-fake.outputs.version_tag }}
+        echo ${{ jobs.deploy-code-fake.outputs.authors }}
