@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  version-deploy-tag:
+  version-bump-up:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,7 +33,15 @@ jobs:
         run: |
           echo ${{ steps.versioning.outputs.version }}
           echo ${{ steps.versioning.outputs.version_tag }}
-#          echo ${{ steps.versioning.outputs.authors }}
+
+  deploy-n-tag:
+    if: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: install-sfdx
         run: |
             wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
@@ -54,3 +62,8 @@ jobs:
           git push origin --tags
 
           # https://stackoverflow.com/questions/17790123/shell-check-if-a-git-tag-exists-in-an-if-else-statement
+          # git log v0.0.1...v0.0.2 --merges 
+          # git log v0.0.1...v0.0.2 --pretty=format:"%s | %an | %ae" --merges
+
+          # Events that trigger workflow
+          # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_call
