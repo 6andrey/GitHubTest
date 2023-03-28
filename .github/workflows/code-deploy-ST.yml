@@ -30,7 +30,7 @@ jobs:
         run: |
           echo ${{ steps.versioning.outputs.version }}
           echo ${{ steps.versioning.outputs.version_tag }}
-      -name: get-latest-tag
+      - name: get-latest-tag
         run: |
           git config --global user.email "6andrey@gmail.com"
           git config --global user.name "Andrey Shestakov"
