@@ -7,7 +7,10 @@ on:
 
 jobs:
   version-bump-up:
+
     runs-on: ubuntu-latest
+    outputs:
+      output1: $
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -34,7 +37,9 @@ jobs:
         run: |
           git config --global user.email "6andrey@gmail.com"
           git config --global user.name "Andrey Shestakov"
-          git tag --list ${{ steps.versioning.outputs.version_tag }}
+          if $(git tag --list ${{ steps.versioning.outputs.version_tag }}); then
+
+      - name     
 
   deploy-n-tag:
     needs: version-bump-up
@@ -69,3 +74,6 @@ jobs:
 
           # Events that trigger workflow
           # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_call
+
+          # https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
+          # https://github.com/actions/runner/issues/834
