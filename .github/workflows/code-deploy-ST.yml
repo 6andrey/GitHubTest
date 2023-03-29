@@ -38,14 +38,14 @@ jobs:
           git config --global user.email "6andrey@gmail.com"
           git config --global user.name "Andrey Shestakov"
           if $(git tag --list ${{ steps.versioning.outputs.version_tag }}); then
-            echo "tag_exists" >> "$GITHUB_OUTPUT"
+            echo "tag-exists=yes" >> "$GITHUB_OUTPUT"
           else
-            echo "tag_does_not_exist" >> "$GITHUB_OUTPUT"
+            echo "tag-exists=no" >> "$GITHUB_OUTPUT"
           fi     
 
   deploy-n-tag:
     needs: version-bump-up
-    if: ${{needs.version-bump-up.outputs.output1}} == "tag_does_not_exist"
+    if: ${{needs.version-bump-up.outputs.output1}} == "no"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
