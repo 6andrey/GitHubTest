@@ -38,9 +38,9 @@ jobs:
           git config --global user.email "6andrey@gmail.com"
           git config --global user.name "Andrey Shestakov"
           if $(git tag --list ${{ steps.versioning.outputs.version_tag }}); then
-            echo "tag exists" >> "$GITHUB_OUTPUT"
+            run: echo "tag exists" >> "$GITHUB_OUTPUT"
           else
-              echo "tag does not exist" >> "$GITHUB_OUTPUT"
+            run: echo "tag does not exist" >> "$GITHUB_OUTPUT"
           fi     
 
   deploy-n-tag:
