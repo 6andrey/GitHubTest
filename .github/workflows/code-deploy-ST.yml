@@ -41,9 +41,7 @@ jobs:
             echo "tag-exists=yes" >> "$GITHUB_OUTPUT"
           else
             echo "tag-exists=no" >> "$GITHUB_OUTPUT"
-          fi     
-      - name: echo-output
-        run: ech
+          fi
 
   deploy-n-tag:
     needs: version-bump-up
