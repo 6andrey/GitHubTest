@@ -37,7 +37,7 @@ jobs:
         run: |
           git config --global user.email "6andrey@gmail.com"
           git config --global user.name "Andrey Shestakov"
-          if $(git tag --list ${{ steps.versioning.outputs.version_tag }}); then
+          if $(git tag --list "${{ steps.versioning.outputs.version_tag }}"); then
             echo "tag-exists=yes" >> "$GITHUB_OUTPUT"
           else
             echo "tag-exists=no" >> "$GITHUB_OUTPUT"
