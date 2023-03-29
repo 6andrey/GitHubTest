@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       output1: ${{ steps.compare-with-latest-tag.outputs.tag-exists }}
+      output2: ${{ steps.echo-runs.outputs.new-version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -32,7 +33,7 @@ jobs:
       - name: echo-runs
         run: |
           echo ${{ steps.versioning.outputs.version }}
-          echo ${{ steps.versioning.outputs.version_tag }}
+          echo "new-version=${{ steps.versioning.outputs.version_tag }}" >> "$GITHUB_OUTPUT"
       - name: compare-with-latest-tag
         run: |
           git config --global user.email "6andrey@gmail.com"
@@ -68,7 +69,7 @@ jobs:
         run: |
           git config --global user.email "6andrey@gmail.com"
           git config --global user.name "Andrey Shestakov"
-          git tag -a ${{ needs.version-bump-up.steps.versioning.outputs.version_tag }} -m "test annotation"
+          git tag -a ${{ needs.version-bump-up.outputs.output2 }} -m "test annotation"
           git push origin --tags
 
           # https://stackoverflow.com/questions/17790123/shell-check-if-a-git-tag-exists-in-an-if-else-statement
