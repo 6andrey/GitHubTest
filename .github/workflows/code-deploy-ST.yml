@@ -10,7 +10,7 @@ jobs:
 
     runs-on: ubuntu-latest
     outputs:
-      output1: $
+      output1: ${{ steps.compare-with-latest-tag.outputs.tag-exists }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -33,16 +33,19 @@ jobs:
         run: |
           echo ${{ steps.versioning.outputs.version }}
           echo ${{ steps.versioning.outputs.version_tag }}
-      - name: get-latest-tag
+      - name: compare-with-latest-tag
         run: |
           git config --global user.email "6andrey@gmail.com"
           git config --global user.name "Andrey Shestakov"
           if $(git tag --list ${{ steps.versioning.outputs.version_tag }}); then
-
-      - name     
+            "tag exists" >> "$GITHUB_OUTPUT"
+          else
+              "tag does not exist" >> "$GITHUB_OUTPUT"
+          fi     
 
   deploy-n-tag:
     needs: version-bump-up
+    if: ${{needs.version-bump-up.outputs.output1}} == "tag does not exist"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
