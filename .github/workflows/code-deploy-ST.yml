@@ -49,7 +49,7 @@ jobs:
 
   deploy-n-tag:
     needs: version-bump-up
-    if: ${{needs.version-bump-up.outputs.output1}} == "yes"
+    if: needs.version-bump-up.outputs.output1 == "yes"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
