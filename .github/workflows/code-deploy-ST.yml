@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test-step-1
-        run: echo needs.version-bump-up.outputs.output1
+        run: echo ${{ needs.version-bump-up.outputs.output1 }}
 
   deploy-n-tag:
     needs: version-bump-up
