@@ -49,7 +49,7 @@ jobs:
 
   test-job:
     needs: version-bump-up
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: test-step-1
         run: echo needs.version-bump-up.outputs.output1
