@@ -50,7 +50,7 @@ jobs:
   deploy-n-tag:
     needs: version-bump-up
     runs-on: ubuntu-latest
-    if: needs.version-bump-up.outputs.output1 == 'no'
+    if: needs.version-bump-up.outputs.output1 == 'tag-exists=no'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
