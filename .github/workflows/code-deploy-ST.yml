@@ -46,7 +46,7 @@ jobs:
           fi
       - name: run-echo-outputs
         run: |
-          echo "${{ outputs.output1 }}"
+          echo "${{ version-bump-up.outputs.output1 }}"
           echo "$outputs.output2"
 
   test-job:
