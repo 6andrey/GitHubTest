@@ -49,8 +49,8 @@ jobs:
 
   deploy-n-tag:
     needs: version-bump-up
-    if: needs.version-bump-up.outputs.output1 == "yes"
     runs-on: ubuntu-latest
+    if: needs.version-bump-up.outputs.output1 == 'yes'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
