@@ -46,8 +46,8 @@ jobs:
           fi
       - name: run-echo-outputs
         run: |
-          echo "$output1"
-          echo "$output2"
+          echo "$outputs.output1"
+          echo "$outputs.output2"
 
   test-job:
     needs: version-bump-up
