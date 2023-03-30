@@ -37,7 +37,6 @@ jobs:
           echo "new-version=${{ steps.versioning.outputs.version_tag }}" >> "$GITHUB_OUTPUT"
       - name: compare-with-latest-tag
         run: |
-          echo "::group::GIT commands"
           git config --global user.email "6andrey@gmail.com"
           git config --global user.name "Andrey Shestakov"
           if $(git tag --list "${{ steps.versioning.outputs.version_tag }}"); then
@@ -45,7 +44,10 @@ jobs:
           else
             echo "tag-exists=no" >> "$GITHUB_OUTPUT"
           fi
-          echo "::endgroup::"
+      - name: run-echo-outputs
+        run: |
+          echo $output1
+          echo $output2
 
   test-job:
     needs: version-bump-up
