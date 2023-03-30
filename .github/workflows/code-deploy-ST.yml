@@ -31,11 +31,13 @@ jobs:
               # A string which indicates the flags used by the `minor_pattern` regular expression. Supported flags: idgs
           version_format: "${major}.${minor}.${patch}-prerelease${increment}"
       - name: echo-runs
+        id: echo-runs-step
         run: |
           echo ${{ steps.versioning.outputs.version }}
           echo "new-version=${{ steps.versioning.outputs.version_tag }}" >> "$GITHUB_OUTPUT"
       - name: compare-with-latest-tag
         run: |
+          echo "::group::GIT commands"
           git config --global user.email "6andrey@gmail.com"
           git config --global user.name "Andrey Shestakov"
           if $(git tag --list "${{ steps.versioning.outputs.version_tag }}"); then
@@ -43,10 +45,11 @@ jobs:
           else
             echo "tag-exists=no" >> "$GITHUB_OUTPUT"
           fi
+          echo "::endgroup::"
 
   deploy-n-tag:
     needs: version-bump-up
-    if: ${{needs.version-bump-up.outputs.output1}} == "no"
+    if: ${{needs.version-bump-up.outputs.output1}} == "yes"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
