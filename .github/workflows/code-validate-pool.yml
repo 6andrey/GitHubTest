@@ -23,6 +23,8 @@ jobs:
         run: |
             echo "${{ secrets.CI1_SFDX_AUTH_URL }}" > ./authfile_ci1
             sfdx auth:sfdxurl:store -f ./authfile_ci1 -a ci1
+            ci1_result=$(sf data query --query "SELECT Id, Status, StartDate, CompletedDate FROM DeployRequest" --target-org ci1 --use-tooling-api)
+            echo "::set-output name=ci1_result::$ci1_result"
 
       - name: Authenticate to Sandbox CI2
         run: |
