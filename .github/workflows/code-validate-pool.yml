@@ -52,7 +52,6 @@ jobs:
             echo "*********************"
 
       - name: Find Less Busy Sandbox
-        needs: [step_count_ci1, step_count_ci2]
         id: find_minimum
         run: |
           ci1_count="${{ steps.step_count_ci1.outputs.ci1_count }}"
@@ -65,7 +64,6 @@ jobs:
           fi
 
       - name: Validate Code In Less Busy Sandbox
-        needs: find_minimum
         id: validate_code
         run: |
           less_busy_sandbox="${{ steps.find_minimum.outputs.less_busy_org }}"
