@@ -24,8 +24,8 @@ jobs:
             echo "${{ secrets.CI1_SFDX_AUTH_URL }}" > ./authfile_ci1
             sfdx auth:sfdxurl:store -f ./authfile_ci1 -a ci1
             ci1_result=$(sfdx force:data:soql:query --query "SELECT Count(Id) FROM DeployRequest Where Status In ('InProgress','Pending')" --targetusername ci1 --usetoolingapi)
-            echo "::set-output name=ci1_result::$ci1_result"
-            echo "$ci1_result"
+            ci1_count=$(echo "$ci1_result" | awk 'NR==2{print $1}')
+            echo "::set-output name=ci1_count::$ci1_count"
 
       - name: Authenticate to Sandbox CI2
         run: |
