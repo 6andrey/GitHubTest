@@ -1,0 +1,32 @@
+name: Authenticate to Salesforce Sandboxes
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  authentication:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Salesforce CLI
+        run: |
+            wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+            mkdir sfdx-cli
+            tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
+            ./sfdx-cli/install  
+
+      - name: Authenticate to Sandbox CI1
+        run: |
+            echo "${{ secrets.CI1_SFDX_AUTH_URL }}" > ./authfile_ci1
+            sfdx auth:sfdxurl:store -f ./authfile_ci1 -a ci1
+
+      - name: Authenticate to Sandbox CI2
+        run: |
+            echo "${{ secrets.CI2_SFDX_AUTH_URL }}" > ./authfile_ci2
+            sfdx auth:sfdxurl:store -f ./authfile_ci2 -a ci2
+
+      # Continue with other workflow steps...
