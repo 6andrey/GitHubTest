@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  authentication:
+  salesforce-job:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,8 @@ jobs:
             tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
             ./sfdx-cli/install  
 
-      - name: Authenticate to Sandbox CI1
+      - name: Get Deployment Jobs Count - Sandbox CI1
+        id: step_count_ci1
         run: |
             echo "${{ secrets.CI1_SFDX_AUTH_URL }}" > ./authfile_ci1
             sfdx auth:sfdxurl:store -f ./authfile_ci1 -a ci1
@@ -34,9 +35,40 @@ jobs:
             echo "$ci1_count"
             echo "*********************"
 
-      - name: Authenticate to Sandbox CI2
+      - name: Get Deployment Jobs Count - Sandbox CI2
+        id: step_count_ci2
         run: |
             echo "${{ secrets.CI2_SFDX_AUTH_URL }}" > ./authfile_ci2
             sfdx auth:sfdxurl:store -f ./authfile_ci2 -a ci2
+            ci2_result=$(sfdx force:data:soql:query --query "SELECT Count(Id) FROM DeployRequest Where Status In ('InProgress','Pending')" --targetusername ci2 --usetoolingapi)
+            ci2_count=$(echo "$ci2_result" | awk 'NR==3{print $1}')
+            echo "::set-output name=ci2_count::$ci2_count"
+            echo "*********************"
+            echo "ci2_result"
+            echo "$ci2_result"
+            echo "*********************"
+            echo "ci2_count:"
+            echo "$ci2_count"
+            echo "*********************"
+
+      - name: Find Less Busy Sandbox
+        needs: [step_count_ci1, step_count_ci2]
+        id: find_minimum
+        run: |
+          ci1_count="${{ steps.step_count_ci1.outputs.ci1_count }}"
+          ci2_count="${{ steps.step_count_ci2.outputs.ci2_count }}"
+
+          if ["$ci1_count" -lt "$ci2_count"]; then
+            echo "::set-output name=less_busy_org::ci1"
+          else
+            echo "::set-output name=less_busy_org::ci2"
+          fi
+
+      - name: Validate Code In Less Busy Sandbox
+        needs: find_minimum
+        id: validate_code
+        run: |
+          less_busy_sandbox="${{ steps.find_minimum.outputs.less_busy_org }}"
+          echo "$less_busy_sandbox"
 
       # Continue with other workflow steps...
