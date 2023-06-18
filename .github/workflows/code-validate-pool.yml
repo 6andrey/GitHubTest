@@ -25,6 +25,7 @@ jobs:
             sfdx auth:sfdxurl:store -f ./authfile_ci1 -a ci1
             ci1_result=$(sfdx force:data:soql:query --query "SELECT Id, Status, StartDate, CompletedDate FROM DeployRequest" --targetusername ci1 --usetoolingapi)
             echo "::set-output name=ci1_result::$ci1_result"
+            echo "$ci1_result"
 
       - name: Authenticate to Sandbox CI2
         run: |
