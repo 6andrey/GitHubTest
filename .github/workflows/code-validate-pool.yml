@@ -26,6 +26,7 @@ jobs:
             ci1_result=$(sfdx force:data:soql:query --query "SELECT Count(Id) FROM DeployRequest Where Status In ('InProgress','Pending')" --targetusername ci1 --usetoolingapi)
             ci1_count=$(echo "$ci1_result" | awk 'NR==2{print $1}')
             echo "::set-output name=ci1_count::$ci1_count"
+            echo "ci1_count"
 
       - name: Authenticate to Sandbox CI2
         run: |
