@@ -1,4 +1,4 @@
-name: PR Code Valiadation - Pool
+name: PR Code Validation - Pool
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  install-sfdx:
+  salesforce-job:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,11 +19,6 @@ jobs:
             tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
             ./sfdx-cli/install  
 
-  ci1:
-    needs: [install-sfdx]
-    runs-on: ubuntu-latest
-    
-    steps:
       - name: Get Deployment Jobs Count - Sandbox CI1
         id: step_count_ci1
         run: |
@@ -40,11 +35,6 @@ jobs:
             echo "$ci1_count"
             echo "*********************"
 
-  ci2:
-    needs: [install-sfdx]
-    runs-on: ubuntu-latest
-              
-    steps:            
       - name: Get Deployment Jobs Count - Sandbox CI2
         id: step_count_ci2
         run: |
@@ -61,16 +51,11 @@ jobs:
             echo "$ci2_count"
             echo "*********************"
 
-  validate-code:
-    needs: [ci1, ci2]
-    runs-on: ubuntu-latest
-              
-    steps:            
       - name: Find Less Busy Sandbox
         id: find_minimum
         run: |
-          ci1_count="${{ needs.ci1.outputs.ci1_count }}"
-          ci2_count="${{ needs.ci2.outputs.ci2_count }}"
+          ci1_count="${{ steps.step_count_ci1.outputs.ci1_count }}"
+          ci2_count="${{ steps.step_count_ci2.outputs.ci2_count }}"
 
           if ["$ci1_count" -lt "$ci2_count"]; then
             echo "::set-output name=less_busy_org::ci1"
@@ -82,6 +67,9 @@ jobs:
         id: validate_code
         run: |
           less_busy_sandbox="${{ steps.find_minimum.outputs.less_busy_org }}"
+          echo "***********************"
+          echo "The less busy sandbox:"
           echo "$less_busy_sandbox"
+          echo "***********************"
 
       # Continue with other workflow steps...
