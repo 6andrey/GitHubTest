@@ -71,5 +71,5 @@ jobs:
           echo "The less busy sandbox:"
           echo "$less_busy_sandbox"
           echo "***********************"
-
+          sfdx force:source:deploy -p "src/core-crm" --targetusername "${{ steps.find_minimum.outputs.less_busy_org }}" -c
       # Continue with other workflow steps...
