@@ -16,8 +16,8 @@ jobs:
 
       - name: Run git diff for "scr-core" folder
         id: step-git-diff-core-crm
-        run: git diff ${{ github.base_ref }} ${{ github.head_ref }} -- src/core-crm || echo src-core folder changed
+        run: git diff --quiet ${{ github.base_ref }} ${{ github.head_ref }} -- src/core-crm || echo src-core folder changed
 
       - name: Run git diff for "sales" folder
         id: step-git-diff-sales
-        run: git diff ${{ github.base_ref }} ${{ github.head_ref }} -- src/sales || echo sales folder changed
+        run: git diff --quiet ${{ github.base_ref }} ${{ github.head_ref }} -- src/sales || echo sales folder changed
