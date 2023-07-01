@@ -23,8 +23,10 @@ jobs:
           echo $(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)
           echo "*********************"
           diff_quiet_output=$(git diff --quiet origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)
+          echo "*********************"
           echo "diff_quiet_output:"
           echo $diff_quiet_output
+          echo "*********************"
           if [ $"(git diff --quiet origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)" != 0 ]
           then
             echo "src-core folder changed"
