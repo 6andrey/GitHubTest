@@ -19,7 +19,9 @@ jobs:
       - name: Run git diff for "core-crm" folder
         id: step-git-diff-core-crm
         run: |
-          echo $"(git diff --quiet origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)"
+          echo "git diff --name-only:"
+          echo $(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)
+          echo "*********************"
           if [ $"(git diff --quiet origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)" = 1 ]
           then
             echo "src-core folder changed"
