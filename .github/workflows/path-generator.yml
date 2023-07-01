@@ -18,12 +18,8 @@ jobs:
 
       - name: Run git diff for "scr-core" folder
         id: step-git-diff-core-crm
-        run: |
-          if [ $(git diff --quiet origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm) -eq 1 ]
-          then
-            echo "src-core folder changed"
-          else
-            echo "src-core folder NOT changed"
+        if: ${{ git diff --quiet origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm) -eq 1 }}
+        run: echo "src-core folder changed"
 
       - name: Run git diff for "sales" folder
         id: step-git-diff-sales
