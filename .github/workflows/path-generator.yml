@@ -31,4 +31,13 @@ jobs:
             
       - name: Run git diff for "sales" folder
         id: step-git-diff-sales
-        run: git diff --quiet origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/sales || echo sales folder changed
+        run: |
+          echo "git diff --name-only:"
+          echo $(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/sales)
+          echo "*********************"
+          if [ $"(git diff --quiet origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/sales)" != 0 ]
+          then
+            echo "sales folder changed"
+          else
+            echo "sales folder NOT changed"
+          fi
