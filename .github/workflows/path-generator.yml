@@ -30,6 +30,9 @@ jobs:
             echo "src-core folder NOT changed"
             echo "core-crm-folder=" >> $GITHUB_OUTPUT
           fi
+          echo "*********************"
+          echo "Output:"
+          echo $core-crm-folder
             
       - name: Run git diff for "sales" folder
         id: step-git-diff-sales
