@@ -22,9 +22,6 @@ jobs:
           echo "git diff --name-only:"
           echo $(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)
           echo "*********************"
-          echo "git diff --exit-code:"
-          echo $(git diff --exit-code origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)
-          echo "*********************"
           if [ $"( -z git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)" ]
           then
             echo "src-core folder changed"
