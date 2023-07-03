@@ -25,7 +25,7 @@ jobs:
           if [ $"( -z git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)" ]
           then
             echo "src-core folder changed"
-            echo "core-crm-folder=src/core-crm" >> $GITHUB_OUTOUT
+            echo "core-crm-folder=src/core-crm" >> $GITHUB_OUTPUT
           else
             echo "src-core folder NOT changed"
             echo "core-crm-folder=" >> $GITHUB_OUTPUT
