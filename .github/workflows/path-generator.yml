@@ -38,7 +38,7 @@ jobs:
           echo "git diff --name-only:"
           echo $(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/sales)
           echo "*********************"
-          if [ $"(git diff --quiet origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/sales)" != 0 ]
+          if [ -z $"(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/sales)"]
           then
             echo "sales folder changed"
           else
