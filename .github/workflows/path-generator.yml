@@ -13,11 +13,31 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Run git diff for scr-core
+      - name: Run git diff for "core-crm" folder
         id: step-git-diff-core-crm
-        run: git diff ${{ github.base_ref }} ${{ github.head_ref }} -- src/core-crm || echo src-core folder changed
-
-      - name: Run git diff for scr-core
+        run: |
+          echo "git diff --name-only:"
+          echo $(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)
+          echo "*********************"
+          if [ $"( -z git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/core-crm)" ]
+          then
+            echo "src-core folder changed"
+          else
+            echo "src-core folder NOT changed"
+          fi
+            
+      - name: Run git diff for "sales" folder
         id: step-git-diff-sales
-        run: git diff ${{ github.base_ref }} ${{ github.head_ref }} -- src/sales || echo sales folder changed
+        run: |
+          echo "git diff --name-only:"
+          echo $(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/sales)
+          echo "*********************"
+          if [ -z $"(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- src/sales)" ]
+          then
+            echo "sales folder changed"
+          else
+            echo "sales folder NOT changed"
+          fi
