@@ -52,13 +52,13 @@ jobs:
         run: |
           echo "*********************"
           echo "Output core-crm folder:"
-          core-crm=${{ steps.step-git-diff-core-crm.outputs.core-crm-folder }}
-          echo $core-crm
+          core_crm=${{ steps.step-git-diff-core-crm.outputs.core-crm-folder }}
+          echo $core_crm
           echo "*********************"
           echo "Output sales folder:"
           sales=${{ steps.step-git-diff-sales.outputs.sales-folder }}
           echo $sales
           echo "*********************"
           echo "all paths:"
-          paths=($core-crm $sales)
+          paths=($core_crm $sales)
           echo $paths
