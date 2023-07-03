@@ -61,4 +61,5 @@ jobs:
           echo "*********************"
           echo "all paths:"
           paths=($core_crm $sales)
-          echo $paths
+          echo $paths[0]
+          echo $paths[1]
