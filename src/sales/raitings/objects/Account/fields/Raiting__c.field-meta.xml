@@ -36,6 +36,11 @@
                 <default>false</default>
                 <label>5</label>
             </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <label>5</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
