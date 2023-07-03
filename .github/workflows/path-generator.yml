@@ -73,4 +73,6 @@ jobs:
           done
 
           concatenated_path=$(IFS=,; echo "${non_empty_paths[*]}")
+          echo "*********************"
+          echo "concatenated_path:"
           echo $concatenated_path
