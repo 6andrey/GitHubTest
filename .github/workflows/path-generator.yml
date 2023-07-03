@@ -31,13 +31,6 @@ jobs:
             echo "src-core folder changed"
             echo "core-crm-folder=src/core-crm" >> $GITHUB_OUTPUT
           fi
-
-      - name: Get core-crm folder
-        run: |
-          echo "*********************"
-          echo "Output:"
-          echo ${{ steps.step-git-diff-core-crm.outputs.core-crm-folder }}
-          echo "*********************"
             
       - name: Run git diff for "sales" folder
         id: step-git-diff-sales
@@ -49,6 +42,37 @@ jobs:
           if [ -z $diff_output ]
           then
             echo "sales folder NOT changed"
+            echo "sales-folder=" >> $GITHUB_OUTPUT
           else
             echo "sales folder changed"
+            echo "sales-folder=src/sales" >> $GITHUB_OUTPUT
           fi
+
+      - name: Concatenation
+        run: |
+          echo "*********************"
+          echo "Output core-crm folder:"
+          core_crm=${{ steps.step-git-diff-core-crm.outputs.core-crm-folder }}
+          echo $core_crm
+          echo "*********************"
+          echo "Output sales folder:"
+          sales=${{ steps.step-git-diff-sales.outputs.sales-folder }}
+          echo $sales
+          echo "*********************"
+          echo "all paths:"
+          paths=($core_crm $sales)
+          echo "${paths[0]}"
+          echo "${paths[1]}"
+          echo "${paths[@]}"
+          non_empty_paths=()
+
+          for str in "${paths[@]}"; do
+            if [[ -n "$str" ]]; then
+              non_empty_paths+=("$str")
+            fi
+          done
+
+          concatenated_path=$(IFS=,; echo "${non_empty_paths[*]}")
+          echo "*********************"
+          echo "concatenated_path:"
+          echo $concatenated_path
