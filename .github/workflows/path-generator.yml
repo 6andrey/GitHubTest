@@ -64,5 +64,13 @@ jobs:
           echo "${paths[0]}"
           echo "${paths[1]}"
           echo "${paths[@]}"
-#          non_empty_paths=("${{ join(' ', paths) }}")
-#          echo "non-empty paths"
+          non_empty_paths=()
+
+          for str in "${paths[@]}"; do
+            if [[ -n "$str" ]]; then
+              non_empty_paths+=("$str")
+            fi
+          done
+
+          concatenated_path=$(IFS=,; echo "${non_empty_paths[*]}")
+          echo $concatenated_path
