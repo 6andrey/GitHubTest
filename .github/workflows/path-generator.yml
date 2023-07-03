@@ -61,5 +61,8 @@ jobs:
           echo "*********************"
           echo "all paths:"
           paths=($core_crm $sales)
-          echo $paths[0]
-          echo $paths[1]
+          echo "${paths[0]}"
+          echo "${paths[1]}"
+          echo "${paths[@]}"
+#          non_empty_paths=("${{ join(' ', paths) }}")
+#          echo "non-empty paths"
