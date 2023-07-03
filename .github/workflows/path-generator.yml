@@ -28,7 +28,7 @@ jobs:
             echo "core-crm-folder=src/core-crm" >> $GITHUB_OUTOUT
           else
             echo "src-core folder NOT changed"
-            echo "core-crm-folder=" >> $GITHUB_OUTOUT
+            echo "core-crm-folder=" >> $GITHUB_OUTPUT
           fi
             
       - name: Run git diff for "sales" folder
