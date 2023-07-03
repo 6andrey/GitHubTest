@@ -30,9 +30,13 @@ jobs:
             echo "src-core folder NOT changed"
             echo "core-crm-folder=" >> $GITHUB_OUTPUT
           fi
+
+      - name: Get core-crm folder
+        run: |
           echo "*********************"
           echo "Output:"
-          echo $core-crm-folder
+          echo ${{ steps.step-git-diff-core-crm.outputs.core-crm-folder }}
+          echo "*********************"
             
       - name: Run git diff for "sales" folder
         id: step-git-diff-sales
