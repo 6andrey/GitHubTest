@@ -1,0 +1,18 @@
+name: Path Generator
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+  workflow_call:
+
+jobs: 
+    call-path-generator:
+        uses: 6andrey/GitHubTest/.github/workflows/path-generator.yml@main
+
+    code-validation:
+      runs-on: ubuntu-latest
+      needs: call-path-generator
+      steps:
+        - run: echo ${{ needs.call-path-generator.outputs.generated_path }}
