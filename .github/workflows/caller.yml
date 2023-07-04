@@ -9,7 +9,7 @@ on:
 
 jobs: 
     call-path-generator:
-        uses: 6andrey/GitHubTest/.github/workflows/path-generator.yml@main
+        uses: ./.github/workflows/path-generator.yml
 
     code-validation:
       runs-on: ubuntu-latest

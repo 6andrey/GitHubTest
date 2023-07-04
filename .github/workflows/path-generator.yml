@@ -2,10 +2,16 @@ name: Path Generator
 
 on:
   workflow_call:
+    outputs:
+      generated_path:
+        description: "The concatenated path of changed folders"
+        value: ${{ jobs.create-path-job.outputs.output1 }}
 
 jobs:
   create-path-job:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.concatenation_step.outputs.generated_path }}
 
     steps:
       - name: Checkout repository
@@ -46,6 +52,7 @@ jobs:
           fi
 
       - name: Concatenation
+        id: concatenation_step
         run: |
           echo "*********************"
           echo "Output core-crm folder:"
