@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Picture__c</fullName>
     <externalId>false</externalId>
-    <label>Picture</label>
+    <label>Picture all that jazz</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Url</type>
