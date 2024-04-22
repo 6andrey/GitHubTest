@@ -7,7 +7,7 @@ jobs:
 
   # passing the secret to a nested reusable workflow
   pass-secret-to-workflow:
-    uses: ./.github/workflows/called
+    uses: ./.github/workflows/called.yml
     secrets:
         target-username: ${{ secrets.TEST_SECRET1 }}
         target-consumer-key: ${{ secrets.TEST_SECRET2 }}
