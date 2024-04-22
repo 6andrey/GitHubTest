@@ -1,0 +1,20 @@
+# Example taken from https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-of-onworkflow_callsecrets
+on:
+    workflow_call:
+      secrets:
+        target-username:
+          description: 'Target Salesforce environment username'
+          required: true
+        
+        target-consumer-key:
+          description: 'Target Salesforce environments connected app consimer key'
+          required: true
+  
+jobs:
+
+    Run-Job:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: 'Run Step'
+              run: echo 'Step Run'

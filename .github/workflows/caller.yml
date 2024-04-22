@@ -1,18 +1,13 @@
-name: Path Generator
+name: Caller
 
 on:
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
-  workflow_call:
 
 jobs: 
-    call-path-generator:
-        uses: ./.github/workflows/path-generator.yml
 
-    code-validation:
-      runs-on: ubuntu-latest
-      needs: call-path-generator
-      steps:
-        - run: echo ${{ needs.call-path-generator.outputs.generated_path }}
+  # passing the secret to a nested reusable workflow
+  pass-secret-to-workflow:
+    uses: ./.github/workflows/called
+    secrets:
+        target-username: ${{ secrets.TEST_SECRET1 }}
+        target-consumer-key: ${{ secrets.TEST_SECRET2 }}
