@@ -2,6 +2,20 @@ name: Caller
 
 on:
   workflow_dispatch:
+    inputs:
+      deployment-mode:
+        description: 'Deployment Mode:'
+        default: 'Deploy only'
+        type: choice
+        options:
+          - Deploy only
+          - Deploy and Publish Portals
+          - Publish Portals only
+      create-tag:
+        type: boolean
+        default: true
+        description: 'Create Git tag - only after successful deployment'
+
 
 jobs: 
 
